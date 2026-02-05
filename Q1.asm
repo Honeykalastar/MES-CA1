@@ -1,0 +1,13 @@
+MOV A, #01H
+MOV B, #04H
+MUL AB
+
+ADD A, #02H
+MOV B, #04H
+MUL AB
+
+ADD A, #09H
+MOV B, #0AH
+MUL AB
+
+ADD A, #03H
