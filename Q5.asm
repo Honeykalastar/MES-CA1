@@ -1,0 +1,22 @@
+MOV R0, #40H     
+MOV R1, #40H     
+
+NEXT_BYTE:
+MOV A, @R0       
+CJNE A, #0FFH, STORE
+SJMP SKIP
+
+STORE:
+MOV @R1, A       
+INC R1           
+
+SKIP:
+INC R0           
+CJNE R0, #60H, NEXT_BYTE
+
+FILL_ZERO:
+MOV A, #00H
+MOV @R1, A
+INC R1
+CJNE R1, #60H, FILL_ZERO
+END
