@@ -1,0 +1,33 @@
+MOV A, 50H     
+MOV R0, A      
+MOV A, 51H     
+MOV R1, A      
+
+CHECK:
+MOV A, R0
+JZ R0_ZERO     
+
+MOV A, R1
+JZ R1_ZERO     
+
+DEC R0         
+DEC R1
+SJMP CHECK
+
+
+R0_ZERO:
+MOV A, R1
+JZ EQUAL        
+MOV A, #0FFH   
+SJMP STORE
+
+R1_ZERO:
+MOV A, #01H    
+SJMP STORE
+
+EQUAL:
+MOV A, #00H    
+
+STORE:
+MOV 52H, A      
+END
